@@ -44,8 +44,6 @@ def main():
     print(f"Gear sum is: {gear_sum}")
     
 def find_near_number(line, num_index, col_num):
-    print (f"line is: {line}")
-    print (f"num index is {num_index}")
     num_start_index = num_index
     num_end_index = num_index
     num_current_index = num_index
@@ -63,9 +61,6 @@ def find_near_number(line, num_index, col_num):
     
     near_num = line[num_start_index:num_end_index]
     near_num = re.sub("[^0-9]", "", near_num)
-    # print(f"near num is {near_num}")
-    print (f"Start is {num_start_index}, end is {num_end_index}")
-    print ("_____________________")
     return [int(near_num), num_start_index, num_end_index, col_num]
 
 def is_matching_gearnum(gear_num, gear_nums):
@@ -100,7 +95,6 @@ def find_gear_sum(map):
                         c = local_row[i]
                         if c != "." and c.isdecimal():
                             gear_num = find_near_number(line, row+gear_row, col+gear_col)
-                            print (gear_num)
                             if (len(gear_nums) > 0 and not is_matching_gearnum(gear_num, gear_nums)):
                                 gear_nums.append(gear_num)
                             elif len(gear_nums) == 0:
@@ -108,12 +102,8 @@ def find_gear_sum(map):
                         gear_row += 1
                         
                     gear_col  += 1
-                print (f"length of gear nums is {len(gear_nums)}")
                 if (len(gear_nums) == 2):
-                    print (f"{gear_nums[0][0]} + {gear_nums[1][0]}")
                     gear_sum += gear_nums[0][0] * gear_nums[1][0]
-                print (gear_nums)
-                print ("_____________________")
             row += 1
         col += 1
     return gear_sum
